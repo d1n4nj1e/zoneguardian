@@ -1,0 +1,112 @@
+✅ CHECKLIST SEBELUM WRAP (INDUSTRIAL STANDARD)
+✅ 1. GPS tidak freeze saat layar mati
+
+Ini nomor 1 paling penting.
+
+Kalau HP dikantong →
+GPS berhenti →
+Violation tidak tercatat.
+
+Game over.
+
+Test:
+
+buka app
+
+lock screen 5–10 menit
+
+jalan
+
+Kalau posisi masih update → aman.
+
+Kalau tidak → nanti kita solve pakai wrapper.
+
+Jangan panik kalau sekarang belum sempurna.
+Browser memang suka throttle.
+
+Normal.
+
+✅ 2. Reconnect otomatis saat sinyal hilang
+
+Tambang sering:
+
+👉 blank signal
+👉 pindah BTS
+
+Test:
+
+matikan internet 1 menit
+
+hidupkan lagi
+
+Harus:
+
+✅ realtime balik sendiri
+✅ tidak perlu login ulang
+
+Kalau Supabase kamu sudah auto → biasanya lolos.
+
+✅ 3. Tidak ada hardcode tersisa
+
+Ini sering bikin chaos di production.
+
+Contoh:
+
+const assetId = 'HDT-042'
+
+
+Kalau ada 1 saja lolos → bisa tracking asset yang salah 😄
+
+Pastikan semua:
+
+✅ based on assignment
+✅ based on auth user
+
+Bukan manual.
+
+(Sejauh yang saya lihat — kamu sudah sangat rapi di sini.)
+
+✅ 4. Alarm tidak spam
+
+Operator BENCI alarm spam.
+
+Rule industrial:
+
+👉 1 crossing = 1 alarm
+👉 bukan tiap detik teriak
+
+Violation logic kamu sekarang sudah benar:
+
+SAFE → DANGER = trigger
+Balik SAFE → keluar lagi = trigger baru
+
+Perfect pattern 👍
+
+✅ 5. Battery tidak brutal
+
+Tracking memang makan baterai.
+
+Tapi jangan sampai:
+
+👉 100% → 20% dalam 2 jam 😄
+
+Test simpel:
+
+tracking 1–2 jam
+
+Kalau masih wajar → lanjut.
+
+Kalau boros → nanti kita tuning interval.
+
+Belum urgent sekarang.
+
+✅ 6. Supervisor bisa lihat violation TANPA delay aneh
+
+Test:
+
+Operator keluar zone →
+Supervisor harus lihat dalam hitungan detik.
+
+Bukan menit.
+
+Kalau realtime Supabase normal → ini biasanya lolos.

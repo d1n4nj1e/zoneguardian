@@ -1,73 +1,106 @@
-# Welcome to your Lovable project
+# ZoneGuardian
 
-## Project info
+## Ringkasan
+ZoneGuardian adalah aplikasi monitoring geofence untuk operasi lapangan dan pengawasan zona. Aplikasi ini mendukung dua peran utama:
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+- **Operator**: memantau lokasi, pelacakan, dan pelanggaran zona secara real-time.
+- **Supervisor**: mengelola zona, tugas penugasan, dan riwayat pelanggaran.
 
-## How can I edit this code?
+Aplikasi ini dibangun dengan React + TypeScript menggunakan Vite, dan terintegrasi dengan Supabase sebagai backend/data store.
 
-There are several ways of editing your application.
+## Fitur Utama
 
-**Use Lovable**
+- Autentikasi pengguna dengan Supabase
+- Dashboard operator dan supervisor terpisah
+- Manajemen zona dan tipe zona
+- Penugasan dan riwayat penugasan zona
+- Monitoring pelanggaran geofence dan dukungan elevasi
+- Peta interaktif dengan Leaflet / Google Maps
+- UI modern menggunakan Tailwind CSS dan komponen `shadcn-ui`
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Teknologi
 
-Changes made via Lovable will be committed automatically to this repo.
+- `React` + `TypeScript`
+- `Vite`
+- `Tailwind CSS`
+- `Supabase` (`@supabase/supabase-js`)
+- `React Router` untuk routing
+- `@tanstack/react-query` untuk fetching data
+- `react-leaflet` dan `@react-google-maps/api` untuk peta
+- `zod` untuk validasi
+- `Vitest` untuk testing
 
-**Use your preferred IDE**
+## Struktur Proyek
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- `src/App.tsx` - routing aplikasi dan proteksi otentikasi
+- `src/pages/` - halaman aplikasi
+- `src/components/` - komponen UI dan logika presentasi
+- `src/contexts/AuthContext.tsx` - manajemen sesi dan user
+- `src/lib/supabase.ts` - konfigurasi Supabase client
+- `src/lib/geofence.ts` - logika status geofence dan elevasi
+- `database_migrations/` - skrip migrasi database (mis. batas elevasi)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Persiapan Lokal
 
-Follow these steps:
+### Prasyarat
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Node.js 18+ atau kompatibel
+- npm atau bun (package manager yang digunakan pada repo ini adalah npm)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Installasi
 
-# Step 3: Install the necessary dependencies.
-npm i
+```bash
+cd "d:/Games/New folder/PROYEK DINAN/1. ZONEGUARDIAN"
+npm install
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Menjalankan Aplikasi
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Buka `http://localhost:5173` di browser.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build Produksi
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Preview Build Produksi
 
-## What technologies are used for this project?
+```bash
+npm run preview
+```
 
-This project is built with:
+## Catatan Konfigurasi Supabase
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Konfigurasi Supabase saat ini disimpan di `src/lib/supabase.ts` dengan URL dan anon key publik. Jika ingin mengganti project Supabase, update nilai berikut:
 
-## How can I deploy this project?
+- `supabaseUrl`
+- `supabaseAnonKey`
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Script NPM
 
-## Can I connect a custom domain to my Lovable project?
+- `npm run dev` - jalankan server pengembangan
+- `npm run build` - bangun aplikasi untuk produksi
+- `npm run preview` - preview hasil build produksi
+- `npm run lint` - jalankan ESLint
+- `npm run test` - jalankan Vitest
+- `npm run test:watch` - jalankan Vitest dalam mode watch
 
-Yes, you can!
+## Pengembangan
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. Pastikan Supabase backend dan struktur tabel siap.
+2. Login sebagai `operator` atau `supervisor`.
+3. Supervisor dapat mengakses halaman:
+   - `/supervise`
+   - `/assignments`
+   - `/assignment-history`
+   - `/zones`
+   - `/zone-types`
+4. Operator dapat mengakses halaman:
+   - `/operate`
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+

@@ -50,7 +50,8 @@ Aplikasi ini dibangun dengan React + TypeScript menggunakan Vite, dan terintegra
 ### Installasi
 
 ```bash
-cd "d:/Games/New folder/PROYEK DINAN/1. ZONEGUARDIAN"
+git clone https://github.com/d1n4nj1e/zoneguardian
+cd zoneguardian
 npm install
 ```
 
